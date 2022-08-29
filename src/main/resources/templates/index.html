@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>결제하기</title>
+    <script src="https://js.tosspayments.com/v1"></script>
+    <meta charset="utf-8">
+</head>
+<body>
+<section>
+    <!-- ... -->
+    <span>총 주문금액</span>
+    <span>100 원</span>
+    <button id="payment-button">100원 결제하기</button>
+</section>
+<script>
+    var clientKey = 'test_ck_7XZYkKL4MrjeALqxMmRV0zJwlEWR'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-button') // 결제하기 버튼
+    button.addEventListener('click', function () {
+        tossPayments.requestPayment('카드', {
+            amount: 100,
+            orderId: 'VQLxKu8uj_RNhx_6gZPWk',
+            orderName: '토스 머그컵 외 2건',
+            customerName: '정토스',
+            successUrl: 'http://localhost:8080/success',
+            failUrl: 'http://localhost:8080/fail',
+        })
+        tossPayments.requestBillingAuth('카드', {
+            customerKey: '1234567890123456',
+            successUrl: 'http://localhost:8080/success',
+            failUrl: 'http://localhost:8080/fail',
+        })
+    })
+</script>
+</body>
+</html>
