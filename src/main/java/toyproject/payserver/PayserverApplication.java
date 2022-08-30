@@ -16,5 +16,6 @@ public class PayserverApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 
 		SpringApplication.run(PayserverApplication.class, args);
+
 	}
 }
